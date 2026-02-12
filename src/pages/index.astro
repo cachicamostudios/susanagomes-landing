@@ -25,8 +25,9 @@ const links = [
     </header>
     <div class="hero-content">
       <h1 class="hero-text">
-        <span class="hero-sans">construyendo mi<br />propio</span><br />
-        <em class="hero-serif">universo digital.</em>
+        construyendo mi<br />
+        propio<br />
+        <em>universo digital.</em>
       </h1>
     </div>
     <nav class="bottom-links" aria-label="Links principales">
@@ -139,21 +140,15 @@ const links = [
   transform: translateY(12px);
   animation: fadeUp 1200ms cubic-bezier(.2,.8,.2,1) forwards;
   animation-delay: 260ms;
+  font-family: 'mundial', sans-serif;
   font-size: clamp(48px, 6vw, 88px);
   line-height: 1.0;
   font-weight: 300;
+  letter-spacing: -0.5px;
   color: #ffffff;
 }
-.hero-sans {
-  font-family: 'mundial', sans-serif;
-  font-weight: 300;
-  letter-spacing: -0.5px;
-}
-.hero-serif {
-  font-family: 'Cormorant Garamond', Georgia, serif;
+.hero-text em {
   font-style: italic;
-  font-weight: 300;
-  letter-spacing: -0.5px;
 }
 @keyframes fadeUp{
   to { opacity: 1; transform: translateY(0); }
