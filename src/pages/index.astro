@@ -1,0 +1,63 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout title="Susana Gomes">
+  <!-- Header -->
+  <header class="fixed top-0 left-0 right-0 z-50 px-8 md:px-12 py-6 md:py-8">
+    <div class="flex justify-between items-center">
+      <h1 class="text-white text-base md:text-lg font-bold tracking-wider">
+        SUSANA GOMES
+      </h1>
+      <a 
+        href="/about" 
+        class="text-white text-sm md:text-base hover:opacity-70 transition-opacity"
+      >
+        About
+      </a>
+    </div>
+  </header>
+
+  <!-- Full Screen Hero -->
+  <section class="relative w-full h-screen overflow-hidden">
+    <!-- Background Image -->
+    <img 
+      src="/hero.png" 
+      alt="Susana Gomes" 
+      class="absolute inset-0 w-full h-full object-cover"
+    />
+    
+    <!-- Dark overlay -->
+    <div class="absolute inset-0 bg-black/20"></div>
+
+    <!-- Hero Text - Bottom Right -->
+    <div class="absolute bottom-16 md:bottom-24 right-8 md:right-12 max-w-xl text-right z-20">
+      <h2 class="text-white text-3xl md:text-5xl lg:text-6xl font-light leading-tight" style="font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;">
+        construyendo mi propio<br /><em>universo digital.</em>
+      </h2>
+    </div>
+
+    <!-- Links - Bottom Left -->
+    <div class="absolute bottom-16 md:bottom-24 left-8 md:left-12 flex gap-6 items-center z-20">
+      <a 
+        href="https://paragraph.com/@susanagomes@cachicamo.studio"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="text-white text-sm md:text-base hover:opacity-70 transition-opacity"
+        style="font-family: Arial, Helvetica, sans-serif;"
+      >
+        paragraph
+      </a>
+      <span class="text-white/40">·</span>
+      <a 
+        href="https://mastodon.social/@susanagomes" 
+        target="_blank"
+        rel="noopener noreferrer"
+        class="text-white text-sm md:text-base hover:opacity-70 transition-opacity"
+        style="font-family: Arial, Helvetica, sans-serif;"
+      >
+        mastodon
+      </a>
+    </div>
+  </section>
+</Layout>
