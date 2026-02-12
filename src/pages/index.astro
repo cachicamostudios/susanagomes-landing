@@ -208,6 +208,49 @@ const links = [
 .pill:hover .underline{
   transform: scaleX(1);
 }
+/* Mobile responsive */
+@media (max-width: 600px) {
+  .hero {
+    padding: 20px;
+  }
+  .topbar {
+    top: 16px;
+    left: 16px;
+    right: 16px;
+  }
+  .brand {
+    font-size: 32px;
+    letter-spacing: 1px;
+  }
+  .toplink {
+    font-size: 14px;
+    padding: 6px 12px;
+  }
+  .hero-content {
+    bottom: 120px;
+    right: 16px;
+    left: 16px;
+    max-width: 100%;
+    text-align: right;
+  }
+  .hero-text {
+    font-size: clamp(36px, 10vw, 52px);
+    line-height: 1.0;
+  }
+  .bottom-links {
+    left: 16px;
+    bottom: 16px;
+    gap: 8px;
+  }
+  .pill {
+    font-size: 13px;
+    padding: 9px 16px;
+  }
+  .scroll-hint {
+    display: none;
+  }
+}
+
 /* Scroll hint */
 .scroll-hint{
   position: absolute;
