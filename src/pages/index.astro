@@ -2,8 +2,8 @@
 import Layout from '../layouts/Layout.astro';
 
 const links = [
-  { label: "Paragraph", href: "https://paragraph.com/@susanagomes@cachicamo.studio" },
-  { label: "Mastodon", href: "https://mastodon.social/@susanagomes" },
+  { label: "Paragraph", href: "https://paragraph.com/@susanagomes@cachicamo.studio", rel: "noreferrer" },
+  { label: "Mastodon", href: "https://mastodon.social/@susanagomes", rel: "me noreferrer" },
 ];
 ---
 
@@ -32,7 +32,7 @@ const links = [
     </div>
     <nav class="bottom-links" aria-label="Links principales">
       {links.map((l) => (
-        <a class="pill" href={l.href} target={l.href.startsWith("http") ? "_blank" : undefined} rel={l.href.startsWith("http") ? "noreferrer" : undefined}>
+        <a class="pill" href={l.href} target={l.href.startsWith("http") ? "_blank" : undefined} rel={l.rel}>
           {l.label}
           <span class="underline" aria-hidden="true"></span>
         </a>
