@@ -14,7 +14,7 @@ const links = [
     <img
       src="/hero.png"
       alt="Susana Gomes"
-      style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; z-index: 1;"
+      class="hero-bg"
     />
 
     <!-- Dark overlay -->
@@ -51,6 +51,20 @@ const links = [
   align-items: center;
   padding: 28px;
   overflow: hidden;
+}
+/* Background image with zoom animation */
+.hero-bg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: 1;
+  animation: slowZoom 20s ease-in-out infinite alternate;
+}
+@keyframes slowZoom{
+  from { transform: scale(1); }
+  to   { transform: scale(1.05); }
 }
 /* Top bar */
 .topbar{
