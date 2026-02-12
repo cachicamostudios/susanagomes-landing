@@ -22,7 +22,6 @@ const links = [
 
     <header class="topbar">
       <a class="brand" href="/">Susana Gomes</a>
-      <a class="toplink" href="/about">About</a>
     </header>
     <div class="hero-content">
       <h1 class="hero-text">
@@ -86,7 +85,7 @@ const links = [
   animation: brandIn 900ms ease forwards;
   animation-delay: 120ms;
   text-decoration: none;
-  color: rgba(255,255,255,0.92);
+  color: #b8fc26;
 
   /* Glassmorphism */
   background: rgba(255, 255, 255, 0.08);
@@ -132,8 +131,12 @@ const links = [
 }
 /* Hero text entrance */
 .hero-content{
+  position: absolute;
+  bottom: 100px;
+  right: 40px;
   z-index: 2;
-  justify-self: end;
+  max-width: 600px;
+  text-align: right;
 }
 .hero-text{
   opacity: 0;
