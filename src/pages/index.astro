@@ -22,6 +22,7 @@ const links = [
 
     <header class="topbar">
       <a class="brand" href="/">Susana Gomes</a>
+      <a class="toplink" href="/about">About</a>
     </header>
     <div class="hero-content">
       <h1 class="hero-text">
@@ -43,6 +44,14 @@ const links = [
 </Layout>
 
 <style>
+@font-face {
+  font-family: 'Last Day On Earth';
+  src: url('/fonts/LastDayOnEarth.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
 .hero {
   min-height: 100vh;
   position: relative;
@@ -77,31 +86,20 @@ const links = [
   z-index: 2;
 }
 .brand{
-  font-size: 26px;
-  font-weight: 550;
-  letter-spacing: 0.8px;
+  font-family: 'Last Day On Earth', sans-serif;
+  font-size: 32px;
+  font-weight: normal;
+  letter-spacing: 1.5px;
   opacity: 0;
   transform: translateY(-6px);
   animation: brandIn 900ms ease forwards;
   animation-delay: 120ms;
   text-decoration: none;
-  color: #b8fc26;
-
-  /* Glassmorphism */
-  background: rgba(255, 255, 255, 0.08);
-  backdrop-filter: blur(12px) saturate(180%);
-  -webkit-backdrop-filter: blur(12px) saturate(180%);
-  border: 1px solid rgba(255, 255, 255, 0.25);
-  padding: 12px 20px;
-  border-radius: 16px;
-  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.12), inset 0 1px 0 rgba(255, 255, 255, 0.2);
-  transition: all 300ms ease;
+  color: white;
+  transition: opacity 300ms ease;
 }
 .brand:hover{
-  background: rgba(255, 255, 255, 0.12);
-  border-color: rgba(255, 255, 255, 0.35);
-  transform: translateY(-2px);
-  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.15), inset 0 1px 0 rgba(255, 255, 255, 0.3);
+  opacity: 0.8;
 }
 @keyframes brandIn{
   to { opacity: 1; transform: translateY(0); }
