@@ -1,63 +1,177 @@
 ---
 import Layout from '../layouts/Layout.astro';
+
+const links = [
+  { label: "Paragraph", href: "https://paragraph.com/@susanagomes@cachicamo.studio" },
+  { label: "Mastodon", href: "https://mastodon.social/@susanagomes" },
+  { label: "About", href: "/about" },
+];
 ---
 
 <Layout title="Susana Gomes">
-  <!-- Header -->
-  <header class="fixed top-0 left-0 right-0 z-50 px-8 md:px-12 py-6 md:py-8">
-    <div class="flex justify-between items-center">
-      <h1 class="text-white text-base md:text-lg font-bold tracking-wider">
-        Susana Gomes
-      </h1>
-      <a 
-        href="/about" 
-        class="text-white text-sm md:text-base hover:opacity-70 transition-opacity"
-      >
-        About
-      </a>
-    </div>
-  </header>
-
-  <!-- Full Screen Hero -->
-  <section class="relative w-full h-screen overflow-hidden">
+  <section class="hero">
     <!-- Background Image -->
-    <img 
-      src="/hero.png" 
-      alt="Susana Gomes" 
-      class="absolute inset-0 w-full h-full object-cover"
+    <img
+      src="/hero.png"
+      alt="Susana Gomes"
+      style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; z-index: 1;"
     />
-    
+
     <!-- Dark overlay -->
-    <div class="absolute inset-0 bg-black/20"></div>
+    <div style="position: absolute; inset: 0; background: rgba(0,0,0,0.2); z-index: 1;"></div>
 
-    <!-- Hero Text - Bottom Right -->
-    <div class="absolute bottom-16 md:bottom-24 right-8 md:right-12 max-w-xl text-right z-20">
-      <h2 class="text-white text-3xl md:text-5xl lg:text-6xl font-light leading-tight" style="font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;">
-        construyendo mi propio<br /><em>universo digital.</em>
-      </h2>
+    <header class="topbar">
+      <a class="brand" href="/">Susana Gomes</a>
+      <a class="toplink" href="/about">About</a>
+    </header>
+    <div class="hero-content">
+      <h1 class="hero-text">
+        construyendo mi<br />
+        propio<br />
+        <em>universo digital.</em>
+      </h1>
     </div>
-
-    <!-- Links - Bottom Left -->
-    <div class="absolute bottom-8 md:bottom-12 left-8 md:left-12 flex gap-6 items-center z-20">
-      <a 
-        href="https://paragraph.com/@susanagomes@cachicamo.studio"
-        target="_blank"
-        rel="noopener noreferrer"
-        class="text-white text-sm md:text-base hover:opacity-70 transition-opacity"
-        style="font-family: Arial, Helvetica, sans-serif;"
-      >
-        paragraph
-      </a>
-      <span class="text-white/40">·</span>
-      <a 
-        href="https://mastodon.social/@susanagomes" 
-        target="_blank"
-        rel="noopener noreferrer"
-        class="text-white text-sm md:text-base hover:opacity-70 transition-opacity"
-        style="font-family: Arial, Helvetica, sans-serif;"
-      >
-        mastodon
-      </a>
-    </div>
+    <nav class="bottom-links" aria-label="Links principales">
+      {links.map((l) => (
+        <a class="pill" href={l.href} target={l.href.startsWith("http") ? "_blank" : undefined} rel={l.href.startsWith("http") ? "noreferrer" : undefined}>
+          {l.label}
+          <span class="underline" aria-hidden="true"></span>
+        </a>
+      ))}
+    </nav>
+    <div class="scroll-hint" aria-hidden="true">↓</div>
   </section>
 </Layout>
+
+<style>
+.hero {
+  min-height: 100vh;
+  position: relative;
+  display: grid;
+  align-items: center;
+  padding: 28px;
+  overflow: hidden;
+}
+/* Top bar */
+.topbar{
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  right: 20px;
+  display:flex;
+  justify-content: space-between;
+  align-items:center;
+  z-index: 2;
+}
+.brand{
+  font-size: 26px;
+  font-weight: 550;
+  letter-spacing: 0.8px;
+  opacity: 0;
+  transform: translateY(-6px);
+  animation: brandIn 900ms ease forwards;
+  animation-delay: 120ms;
+  text-decoration: none;
+  color: rgba(255,255,255,0.92);
+}
+@keyframes brandIn{
+  to { opacity: 1; transform: translateY(0); }
+}
+.toplink{
+  font-size: 16px;
+  opacity: 0.85;
+  text-decoration: none;
+  color: rgba(255,255,255,0.85);
+}
+/* Hero text entrance */
+.hero-content{
+  z-index: 2;
+  justify-self: end;
+}
+.hero-text{
+  opacity: 0;
+  transform: translateY(12px);
+  animation: fadeUp 1200ms cubic-bezier(.2,.8,.2,1) forwards;
+  animation-delay: 260ms;
+  font-size: clamp(44px, 5vw, 74px);
+  line-height: 0.95;
+  font-weight: 300;
+  color: rgba(255,255,255,0.92);
+}
+.hero-text em{
+  font-style: italic;
+  opacity: 0.92;
+}
+@keyframes fadeUp{
+  to { opacity: 1; transform: translateY(0); }
+}
+/* Bottom left links */
+.bottom-links{
+  position: absolute;
+  left: 20px;
+  bottom: 20px;
+  display:flex;
+  gap: 10px;
+  z-index: 2;
+  opacity: 0;
+  transform: translateY(8px);
+  animation: bottomIn 900ms ease forwards;
+  animation-delay: 520ms;
+}
+@keyframes bottomIn{
+  to { opacity: 1; transform: translateY(0); }
+}
+.pill{
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 14px;
+  border-radius: 999px;
+  border: 1px solid rgba(255,255,255,0.35);
+  background: rgba(0,0,0,0.18);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  text-decoration: none;
+  color: rgba(255,255,255,0.9);
+  font-size: 14px;
+  letter-spacing: 0.4px;
+  transition: transform 240ms ease, background 240ms ease, border-color 240ms ease;
+}
+.pill:hover{
+  transform: translateY(-1px);
+  background: rgba(255,255,255,0.08);
+  border-color: rgba(255,255,255,0.55);
+}
+/* underline animation */
+.pill .underline{
+  position: absolute;
+  left: 14px;
+  right: 14px;
+  bottom: 6px;
+  height: 1px;
+  background: rgba(255,255,255,0.75);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 260ms ease;
+  opacity: 0.8;
+}
+.pill:hover .underline{
+  transform: scaleX(1);
+}
+/* Scroll hint */
+.scroll-hint{
+  position: absolute;
+  left: 50%;
+  bottom: 18px;
+  transform: translateX(-50%);
+  opacity: 0.65;
+  animation: pulse 1.8s ease-in-out infinite;
+  z-index: 2;
+  font-size: 18px;
+}
+@keyframes pulse{
+  0%,100%{ transform: translateX(-50%) translateY(0); opacity: .55; }
+  50%{ transform: translateX(-50%) translateY(6px); opacity: .85; }
+}
+</style>
