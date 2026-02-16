@@ -24,8 +24,10 @@ import Layout from '../layouts/Layout.astro';
   </header>
 
   <!-- About Content -->
-  <section class="min-h-screen pt-32 md:pt-40 pb-24 px-8 md:px-12 bg-dark-900">
-    <div class="max-w-3xl mx-auto">
+  <section class="min-h-screen pt-32 md:pt-40 pb-24 px-8 md:px-12" style="position: relative; background-image: url('/andromeda.png'); background-size: cover; background-position: center; background-attachment: fixed;">
+    <!-- overlay oscuro para legibilidad del texto -->
+    <div style="position: absolute; inset: 0; background: rgba(0,0,0,0.55); z-index: 0;"></div>
+    <div class="max-w-3xl mx-auto" style="position: relative; z-index: 1;">
       <h1 class="text-white text-4xl md:text-5xl lg:text-6xl font-bold mb-16" style="font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;">
         About
       </h1>
@@ -53,4 +55,5 @@ import Layout from '../layouts/Layout.astro';
       </div>
     </div>
   </section>
+
 </Layout>
