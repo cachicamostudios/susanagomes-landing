@@ -59,14 +59,15 @@ const {
   }
 
   html {
-    scroll-snap-type: y mandatory;
-    overflow-y: scroll;
     height: 100%;
+    overflow: hidden; /* evita body scroll propagation al viewport */
   }
 
   body {
     overflow-x: hidden;
+    overflow-y: scroll;
     height: 100%;
+    scroll-snap-type: y mandatory;
     font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
   }
 
