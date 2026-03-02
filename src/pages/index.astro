@@ -30,13 +30,27 @@ const links = [
         universo digital.
       </h1>
     </div>
-    <nav class="bottom-links" aria-label="Links principales">
-      {links.map((l) => (
-        <a class="pill" href={l.href} target={l.href.startsWith("http") ? "_blank" : undefined} rel={l.rel}>
-          {l.label}
-          <span class="underline" aria-hidden="true"></span>
-        </a>
-      ))}
+
+    <!-- Scroll hint -->
+    <div class="scroll-hint" aria-hidden="true">↓</div>
+  </section>
+
+  <!-- Muy pronto section -->
+  <section class="pronto-section">
+    <img src="/caminata-espacial.png" alt="" class="pronto-bg" />
+    <div class="pronto-overlay"></div>
+    <div class="pronto-content">
+      <h2 class="pronto-text">muy pronto.</h2>
+    </div>
+    <nav class="pronto-links" aria-label="Links principales">
+      <a class="pill" href="https://paragraph.com/@susanagomes@cachicamo.studio" target="_blank" rel="noreferrer">
+        Blog
+        <span class="underline" aria-hidden="true"></span>
+      </a>
+      <a class="pill" href="https://mastodon.social/@susanagomes" target="_blank" rel="me noreferrer">
+        Mastodon
+        <span class="underline" aria-hidden="true"></span>
+      </a>
     </nav>
   </section>
 </Layout>
@@ -51,7 +65,8 @@ const links = [
 }
 
 .hero {
-  min-height: 100vh;
+  height: 100vh;
+  scroll-snap-align: start;
   position: relative;
   display: grid;
   align-items: center;
@@ -199,6 +214,12 @@ const links = [
     inset 0 -1px 0 rgba(255, 255, 255, 0.05);
   transition: all 300ms cubic-bezier(0.4, 0, 0.2, 1);
 }
+.pill-icon {
+  width: 14px;
+  height: 14px;
+  flex-shrink: 0;
+  opacity: 0.85;
+}
 .pill:hover{
   transform: translateY(-2px) scale(1.02);
   background: rgba(255, 255, 255, 0.14);
@@ -272,15 +293,110 @@ const links = [
 .scroll-hint{
   position: absolute;
   left: 50%;
-  bottom: 18px;
+  bottom: 24px;
   transform: translateX(-50%);
-  opacity: 0.65;
-  animation: pulse 1.8s ease-in-out infinite;
   z-index: 2;
-  font-size: 18px;
+  animation: pulse 1.8s ease-in-out infinite;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 64px;
+  border-radius: 999px;
+  font-size: 22px;
+  color: rgba(255, 255, 255, 0.9);
+
+  /* Liquid glass */
+  background: rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(20px) saturate(180%) brightness(1.1);
+  -webkit-backdrop-filter: blur(20px) saturate(180%) brightness(1.1);
+  border: 1px solid rgba(255, 255, 255, 0.22);
+  box-shadow:
+    0 2px 8px rgba(0, 0, 0, 0.15),
+    0 8px 32px rgba(0, 0, 0, 0.1),
+    inset 0 1px 0 rgba(255, 255, 255, 0.35),
+    inset 0 -1px 0 rgba(255, 255, 255, 0.05);
 }
 @keyframes pulse{
-  0%,100%{ transform: translateX(-50%) translateY(0); opacity: .55; }
-  50%{ transform: translateX(-50%) translateY(6px); opacity: .85; }
+  0%,100%{ transform: translateX(-50%) translateY(0); opacity: .7; }
+  50%{ transform: translateX(-50%) translateY(6px); opacity: 1; }
+}
+
+/* Warning stripe divider */
+.hero::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 7px;
+  z-index: 5;
+  background: repeating-linear-gradient(
+    -45deg,
+    rgba(245, 200, 20, 0.88),
+    rgba(245, 200, 20, 0.88) 9px,
+    rgba(8, 8, 8, 0.88) 9px,
+    rgba(8, 8, 8, 0.88) 18px
+  );
+  box-shadow:
+    0 0 12px rgba(245, 200, 20, 0.55),
+    0 0 28px rgba(245, 200, 20, 0.25);
+  pointer-events: none;
+}
+
+/* Muy pronto section */
+.pronto-section {
+  height: 100vh;
+  scroll-snap-align: start;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+.pronto-bg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: 0;
+  animation: slowZoom 20s ease-in-out infinite alternate;
+}
+.pronto-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.55);
+  z-index: 1;
+}
+.pronto-content {
+  position: absolute;
+  z-index: 2;
+  right: 22%;
+  top: 52%;
+  transform: translateY(-50%);
+  text-align: right;
+}
+.pronto-links {
+  position: absolute;
+  right: 20px;
+  bottom: 20px;
+  display: flex;
+  gap: 10px;
+  z-index: 3;
+  opacity: 0;
+  transform: translateY(8px);
+  animation: bottomIn 900ms ease forwards;
+  animation-delay: 520ms;
+}
+.pronto-text {
+  font-family: 'strelka', sans-serif;
+  font-size: clamp(26px, 3.2vw, 48px);
+  font-weight: 900;
+  line-height: 1;
+  letter-spacing: -0.5px;
+  color: #ffffff;
+  margin: 0;
 }
 </style>

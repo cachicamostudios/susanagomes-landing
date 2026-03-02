@@ -59,11 +59,14 @@ const {
   }
 
   html {
-    scroll-behavior: smooth;
+    scroll-snap-type: y mandatory;
+    overflow-y: scroll;
+    height: 100%;
   }
 
   body {
     overflow-x: hidden;
+    height: 100%;
     font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
   }
 
