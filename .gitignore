@@ -20,3 +20,37 @@ pnpm-debug.log*
 
 # jetbrains setting folders
 .idea/
+
+# AI agent tooling (skills instaladas por error) — no es parte del sitio
+.claude/
+skills/
+skills-lock.json
+.adal/
+.agent/
+.agents/
+.augment/
+.codebuddy/
+.commandcode/
+.continue/
+.cortex/
+.crush/
+.factory/
+.goose/
+.iflow/
+.junie/
+.kilocode/
+.kiro/
+.kode/
+.mcpjam/
+.mux/
+.neovate/
+.openhands/
+.pi/
+.pochi/
+.qoder/
+.qwen/
+.roo/
+.trae/
+.vibe/
+.windsurf/
+.zencoder/
